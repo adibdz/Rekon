@@ -1,17 +1,20 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
+de() {
+  echo "[+] $1"
+}
 
-#starting sublist3r
+de "starting sublist3r"
 sublist3r -d $1 -v -o domains.txt
 
-#running assetfinder
-~/go/bin/assetfinder --subs-only $1 | tee -a domains.txt
+de "starting assetfinder"
+assetfinder --subs-only $1 | tee -a domains.txt
 
-#removing duplicate entries
+de "removing duplicate entries"
 sort -u domains.txt -o domains.txt
 
-#checking for alive domains
-echo "\n\n[+] Checking for alive domains..\n"
-cat domains.txt | ~/go/bin/httprobe | tee -a alive.txt
+de "checking for alive domains"
+cat domains.txt | httprobe | tee -a alive.txt
 
+de "done"
 
