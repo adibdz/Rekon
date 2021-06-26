@@ -1,7 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-mkdir -p headers
-mkdir -p responsebody
+[[ -d "headers" ]] && rm -rf "./headers"
+[[ -d "responsebody" ]] && rm -rf "./responsebody"
+mkdir headers
+mkdir responsebody
 
 export CURRENT_PATH=$(pwd)
 
@@ -11,7 +13,6 @@ fetch_resp() {
 	curl -s -X GET -H "X-Forwarded-For: evil.com" $1 -kLI > "$CURRENT_PATH/headers/$NAME"
 	curl -s -X GET -H "X-Forwarded-For: evil.com" -kL $1 > "$CURRENT_PATH/responsebody/$NAME"
 }
-
 
 export -f fetch_resp
 cat $1 | xargs -P 50 -n 1 -I {} bash -c "fetch_resp {}"

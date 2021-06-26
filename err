@@ -1,0 +1,2 @@
+/home/qwerty/bin/sublist3r:614: DeprecationWarning: please use dns.resolver.Resolver.resolve() instead
+  ip = Resolver.query(host, 'A')[0].to_text()

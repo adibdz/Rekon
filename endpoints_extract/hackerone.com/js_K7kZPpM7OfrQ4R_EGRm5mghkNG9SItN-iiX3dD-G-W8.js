@@ -1,0 +1,3 @@
+/assets/static_pages-a82409578e1edfb0c6ef16853b4f9b760c9407be98f7805ea598fb0e8bc1a382.css
+/assets/static_pages/logo-2ece2531df044c27fdb123146a12f674e6414ae8dbff01b24b22d3ed87324da6.svg
+/hacktivity
